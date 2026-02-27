@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d8358430f6946c47aefb245248fc566, type: 3}
+  m_Name: Tower
+  m_EditorClassIdentifier: 
+  nombre: Tower
+  dano: 0
+  costo: 1
+  proteccion: 0
+  curacion: 0
+  agilidad: 0.2
+  descripcion: Te permite esquivar golpes los siguientes 3 turnos.
+  sprite: {fileID: -4812098659053584605, guid: 6edf0c266b5a9164bb090ee8ab45259c, type: 3}
