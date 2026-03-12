@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Videogame Wiki</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <nav class="navbar" th:fragment="navbar">
+        <a th:href="@{/}" class="navbar-brand">VG Wiki</a>
+        <div class="nav-links">
+            <a th:href="@{/}">Home</a>
+            <a th:href="@{/profile}" sec:authorize="isAuthenticated()">Profile</a>
+
+            <form th:action="@{/users/search}" method="get" style="display: inline; margin-left: 1rem;">
+                <input type="text" name="query" placeholder="Find users..."
+                    style="background: #2d3748; border: 1px solid var(--border-color); color: white; padding: 0.4rem 0.8rem; border-radius: 20px; outline: none; font-size: 0.9rem;">
+            </form>
+
+            <span sec:authorize="isAuthenticated()">
+                <span style="color: var(--text-secondary); margin-left: 1rem;">
+                    Welcome, <span sec:authentication="name"
+                        style="color: var(--primary-color); font-weight: 600;"></span>!
+                </span>
+                <a th:href="@{/videogames/new}" sec:authorize="hasRole('ROLE_ADMIN')">Add Game</a>
+
+                <form th:action="@{/logout}" method="post" style="display: inline;">
+                    <button type="submit" style="background:none; border:none; cursor:pointer;" class="nav-links">
+                        <a href="#">Logout</a>
+                    </button>
+                </form>
+            </span>
+
+            <span sec:authorize="!isAuthenticated()">
+                <a th:href="@{/login}">Login</a>
+                <a th:href="@{/register}">Register</a>
+            </span>
+        </div>
+    </nav>
+
+    <div class="container" th:replace="~{::content}">
+    </div>
+
+    <footer th:fragment="footer" class="footer">
+        <p>&copy; <span th:text="${#dates.year(#dates.createNow())}"></span> Videogame Wiki App. Made for Spring Boot
+            MVC Project.</p>
+    </footer>
+
+</body>
+
+</html>

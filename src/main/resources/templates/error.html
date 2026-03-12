@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${errorTitle} + ' - Wiki'">Error - Wiki</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div th:replace="~{fragments/layout :: navbar}"></div>
+
+    <div class="container" style="text-align: center; padding: 4rem 1rem;">
+        <h1 class="error-title" th:text="${errorTitle}">Error</h1>
+        <p th:text="${errorMessage}" style="font-size: 1.25rem; color: var(--text-secondary); margin-bottom: 2rem;"></p>
+        <a th:href="@{/}" class="btn btn-primary">Return Home</a>
+    </div>
+
+    <div th:replace="~{fragments/layout :: footer}"></div>
+
+</body>
+
+</html>
