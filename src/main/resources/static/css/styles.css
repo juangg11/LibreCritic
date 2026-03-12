@@ -80,7 +80,8 @@ body {
     flex-shrink: 0;
 }
 
-/* Auth Cards */
+
+
 .auth-card {
     background: var(--card-bg);
     padding: 2.5rem;
@@ -162,7 +163,8 @@ body {
     border-color: var(--danger-hover);
 }
 
-/* Grid layout for games */
+
+
 .games-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -207,7 +209,8 @@ body {
     margin-bottom: 1rem;
 }
 
-/* Alerts */
+
+
 .alert {
     padding: 1rem;
     margin-bottom: 1rem;
@@ -227,7 +230,8 @@ body {
     border: 1px solid rgba(34, 197, 94, 0.3);
 }
 
-/* Error page elements */
+
+
 .error-container {
     text-align: center;
     padding: 4rem 2rem;

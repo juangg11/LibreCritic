@@ -24,7 +24,6 @@ public class DataInitializer {
                                         RoleRepository roleRepository, 
                                         PasswordEncoder passwordEncoder) {
         return args -> {
-            // Seed Roles
             Role adminRole = roleRepository.findByName("ROLE_ADMIN");
             if (adminRole == null) {
                 adminRole = new Role();
@@ -39,7 +38,6 @@ public class DataInitializer {
                 roleRepository.save(userRole);
             }
 
-            // Seed Admin User
             if (userRepository.findByUsername("admin") == null) {
                 User admin = new User();
                 admin.setUsername("admin");
