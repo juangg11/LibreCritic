@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Videogame Form - Wiki</title>
+    <title>Formulario de juego - LibreCritic</title>
     <link rel="stylesheet" th:href="@{/css/styles.css}">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -16,9 +16,9 @@
     <div class="container" style="margin-top: 2rem;">
         <div style="max-width: 600px; margin: 0 auto;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
-                <h2 th:text="${videogame.id != null ? 'Edit Videogame' : 'Add New Videogame'}"></h2>
-                <a th:href="@{/}" class="btn"
-                    style="background: var(--card-bg); border: 1px solid var(--border-color); color: var(--text-primary);">Back</a>
+                    <h2 th:text="${videogame.id != null ? 'Editar juego' : 'Agregar nuevo juego'}"></h2>
+                    <a th:href="@{/}" class="btn"
+                        style="background: var(--card-bg); border: 1px solid var(--border-color); color: var(--text-primary);">Volver</a>
             </div>
 
             <div class="auth-card" style="max-width: none; margin: 0;">
@@ -26,40 +26,40 @@
                     th:object="${videogame}" method="post" enctype="multipart/form-data">
 
                     <div class="form-group">
-                        <label for="title">Title *</label>
+                        <label for="title">Título *</label>
                         <input type="text" id="title" class="form-control" th:field="*{title}" required>
                         <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="alert alert-error"
                             style="margin-top: 0.5rem; padding: 0.5rem;"></p>
                     </div>
 
                     <div class="form-group">
-                        <label for="developer">Developer</label>
+                        <label for="developer">Desarrollador</label>
                         <input type="text" id="developer" class="form-control" th:field="*{developer}">
                     </div>
 
                     <div class="form-group">
-                        <label for="releaseDate">Release Date</label>
+                    <label for="releaseDate">Fecha de lanzamiento</label>
                         <input type="date" id="releaseDate" class="form-control" th:field="*{releaseDate}">
                     </div>
 
                     <div class="form-group">
-                        <label for="description">Description</label>
+                        <label for="description">Descripción</label>
                         <textarea id="description" class="form-control" th:field="*{description}" rows="5"
                             style="resize: vertical;"></textarea>
                     </div>
 
                     <div class="form-group">
-                        <label for="image">Cover Image (Optional)</label>
+                        <label for="image">Imagen de portada (opcional)</label>
                         <input type="file" id="image" name="image" class="form-control"
                             accept="image/png, image/jpeg, image/jpg">
                         <p th:if="${videogame.coverImagePath != null}"
                             style="margin-top: 0.5rem; font-size: 0.875rem; color: var(--text-secondary);">
-                            Current file: <span th:text="${videogame.coverImagePath}"></span>
+                            Archivo actual: <span th:text="${videogame.coverImagePath}"></span>
                         </p>
                     </div>
 
                     <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;"
-                        th:text="${videogame.id != null ? 'Update Game' : 'Save Game'}"></button>
+                        th:text="${videogame.id != null ? 'Actualizar juego' : 'Guardar juego'}"></button>
                 </form>
             </div>
         </div>

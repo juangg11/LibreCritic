@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Profile - Videogames Wiki</title>
+    <title>Mi perfil - LibreCritic</title>
     <link rel="stylesheet" th:href="@{/css/styles.css}">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -20,26 +20,26 @@
                 <h2 th:text="${user.username}" style="color: var(--primary-color);"></h2>
 
                 <div style="margin: 1rem 0; color: var(--text-secondary); line-height: 1.6;">
-                    <p th:text="${user.bio != null and !user.bio.isEmpty() ? user.bio : 'No biography provided yet.'}"
+                    <p th:text="${user.bio != null and !user.bio.isEmpty() ? user.bio : 'Aún no hay biografía.'}"
                         style="font-style: italic;"></p>
                 </div>
 
                 <div
                     style="display: flex; gap: 2rem; margin-top: 1rem; color: var(--text-secondary); font-size: 0.9rem;">
                     <span><strong th:text="${#lists.size(user.followers)}" style="color: white;"></strong>
-                        Followers</span>
+                        Seguidores</span>
                     <span><strong th:text="${#lists.size(user.following)}" style="color: white;"></strong>
-                        Following</span>
+                        Siguiendo</span>
                 </div>
             </div>
 
             <div style="text-align: right;">
                 <div th:if="${isOwnProfile}">
-                    <button id="editBioBtn" class="btn btn-primary" style="margin-bottom: 1rem;">Edit Bio</button>
+                    <button id="editBioBtn" class="btn btn-primary" style="margin-bottom: 1rem;">Editar bio</button>
                     <form id="bioForm" th:action="@{/profile/update-bio}" method="post" style="display: none;">
                         <textarea name="bio" th:text="${user.bio}" maxlength="500"
                             style="width: 100%; border-radius: 8px; background: #2d3748; color: white; padding: 0.5rem; border: 1px solid var(--border-color); margin-bottom: 0.5rem; min-width: 200px;"></textarea>
-                        <button type="submit" class="btn btn-primary">Save</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
                     </form>
                     <script>
                         document.getElementById('editBioBtn').onclick = function () {
@@ -51,18 +51,18 @@
 
                 <div th:unless="${isOwnProfile}" sec:authorize="isAuthenticated()">
                     <form th:if="${!isFollowing}" th:action="@{'/follow/' + ${user.username}}" method="post">
-                        <button type="submit" class="btn btn-primary">Follow</button>
+                        <button type="submit" class="btn btn-primary">Seguir</button>
                     </form>
                     <form th:if="${isFollowing}" th:action="@{'/unfollow/' + ${user.username}}" method="post">
-                        <button type="submit" class="btn btn-danger">Unfollow</button>
+                        <button type="submit" class="btn btn-danger">Dejar de seguir</button>
                     </form>
                 </div>
             </div>
         </div>
 
-        <h3>My Reviews</h3>
+        <h3>Mis reseñas</h3>
         <div th:if="${#lists.isEmpty(reviews)}" style="margin-top: 1rem; color: var(--text-secondary);">
-            You haven't posted any reviews yet.
+            Aún no has publicado reseñas.
         </div>
 
         <div th:each="review : ${reviews}" class="stats-card" style="margin-top: 1rem; display: block;">
@@ -72,8 +72,8 @@
                         <a th:href="@{'/videogames/' + ${review.videogame.id}}" th:text="${review.videogame.title}"
                             style="color: var(--primary-color); text-decoration: none;"></a>
                     </h4>
-                    <span th:if="${review.positive}" style="color: #48bb78; font-weight: bold;">Positive</span>
-                    <span th:unless="${review.positive}" style="color: #f56565; font-weight: bold;">Negative</span>
+                        <span th:if="${review.positive}" style="color: #48bb78; font-weight: bold;">Positiva</span>
+                        <span th:unless="${review.positive}" style="color: #f56565; font-weight: bold;">Negativa</span>
                 </div>
                 <span th:text="${#temporals.format(review.createdAt, 'dd/MM/yyyy HH:mm')}"
                     style="font-size: 0.8rem; color: var(--text-secondary);"></span>

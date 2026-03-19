@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
-    <title>Login - Videogame Wiki</title>
+    <title>Iniciar sesión - LibreCritic</title>
     <link rel="stylesheet" th:href="@{/css/styles.css}">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -13,37 +13,37 @@
 
     <div class="container">
         <div class="auth-card">
-            <h2>Welcome Back</h2>
+            <h2>Bienvenido</h2>
 
             <div th:if="${param.error}" class="alert alert-error">
-                Invalid username or password.
+                Usuario o contraseña inválidos.
             </div>
 
             <div th:if="${param.logout}" class="alert alert-success">
-                You have been logged out.
+                Has cerrado sesión.
             </div>
 
             <form th:action="@{/login}" method="post">
                 <div class="form-group">
-                    <label for="username">Username</label>
+                    <label for="username">Nombre de usuario</label>
                     <input type="text" id="username" name="username" class="form-control" required autofocus>
                 </div>
 
                 <div class="form-group">
-                    <label for="password">Password</label>
+                    <label for="password">Contraseña</label>
                     <input type="password" id="password" name="password" class="form-control" required>
                 </div>
 
                 <div class="form-group" style="display: flex; align-items: center; gap: 0.5rem;">
                     <input type="checkbox" id="remember-me" name="remember-me">
-                    <label for="remember-me" style="margin-bottom: 0;">Remember me</label>
+                    <label for="remember-me" style="margin-bottom: 0;">Recuérdame</label>
                 </div>
 
-                <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Iniciar sesión</button>
             </form>
 
             <p style="text-align: center; margin-top: 1.5rem; color: var(--text-secondary); font-size: 0.875rem;">
-                Don't have an account? <a th:href="@{/register}" style="color: var(--primary-color);">Register here</a>
+                ¿No tienes una cuenta? <a th:href="@{/register}" style="color: var(--primary-color);">Regístrate aquí</a>
             </p>
         </div>
     </div>
